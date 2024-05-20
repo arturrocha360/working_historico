@@ -7,7 +7,87 @@ from classificacao_lista_ip import gerar_sistemas_ip
 from gerador_excel import Lista_equipamentos
 from Plano_integração import Gerar_Plano_integração
 from Caminhos_documentos import caminho_template_plano_integração,caminho_consulta_plano_integração
-from Historico_Estacao import consulta_tabelas
+import csv
+from tkinter import filedialog
+import shutil
+import os
+from macro import roda_script
+
+
+
+def selecionar_arquivo():
+    diretorio_arquivo = os.path.dirname(os.path.realpath(__file__))
+
+    caminho = os.path.join(diretorio_arquivo,'Estacao','ESTACAO')
+
+    shutil.rmtree(caminho)
+
+    pastas=["Lista de Cabos","Lista de Entradas","Lista de Equipamentos","Lista de IP","Lista de Materiais","Mapa de Comunicação",
+        "Plano de Integração","Procedimentos de Comissionamento","Procedimentos de Pré","Relatório de Levamentamento"]
+# Especifica o caminho da pasta a ser criada
+
+# Verifica se o diretório não existe e, em seguida, o cria
+    for pasta in pastas:
+        os.makedirs(caminho+"/"+pasta)
+    arquivo_selecionado = filedialog.askopenfilename(initialdir="/", title="Selecione o arquivo")
+    if arquivo_selecionado:
+        origem = arquivo_selecionado
+        shutil.copy(origem, caminho)
+        roda_script()
+    
+
+def remover_todos_itens():
+    # Remove todos os itens da tabela
+    tabela2.delete(*tabela2.get_children())
+
+def importar_estacao():
+   
+    arquivo="noname"
+   # Abre uma caixa de diálogo para escolher um arquivo
+    arquivo = filedialog.askopenfilename(
+        title="Selecione um arquivo",
+        filetypes=(("Arquivos CSV", "*.csv"),)
+    )
+    # Se um arquivo foi selecionado, exibe o caminho do arquivo   
+        # Nombre del archivo CSV
+    if arquivo=="noname":
+        messagebox.showerror("Erro","Nenhum arquivo foi selecionado")
+    else:
+        # Leer el archivo CSV y convertirlo en un DataFrame de pandas
+        df = pd.read_csv(arquivo)
+
+        # Mostrar el DataFrame como tabla
+        lista_de_listas = [df.columns.tolist()] + df.values.tolist()
+            
+        for row in lista_de_listas:
+            tabela2.insert("", "end", values=row)
+        messagebox.showinfo('Aviso',f'Os equipamentos da estação {arquivo} foram adicionados')
+    
+def historico_estacao():
+    
+       #selected_item é o nome da estação que foi selecionado pelo usuário no list box, esse nome é usado para retornar o endereço de ip'
+    index = listbox.curselection()[0]
+   
+    estacao = listbox.get(index)
+    #tabela2 detem os equipamentos selecionados  pelo usuário na interface,valores é a lista que recebe esses dados 
+
+    lista_equipamentos = []#
+    
+    for row in tabela2.get_children():
+        valores = tabela2.item(row)['values']
+        lista_equipamentos.append(valores)
+
+    filename = f'{estacao}.csv'
+    if int(len(lista_equipamentos))==0:
+        messagebox.showerror("Aviso",f'Não existe equipamentos selecionados')
+    else:
+
+        # Escribir la lista de listas en el archivo CSV
+        with open(filename, mode='w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerows(lista_equipamentos)
+        messagebox.showinfo("Aviso",f' O arquivo CSV da Estação {estacao} foi exportado')
+
 def gerador_ips(ip_inicial,quantidade):
   lista_ip=[]
   for i in range(0, quantidade):
@@ -19,9 +99,11 @@ def on_select(event):
     if listbox.curselection():
         # Se houver uma seleção, habilita o botão
         botao_excel.config(state=tk.NORMAL)
+        botao_historico.config(state=tk.NORMAL)
     else:
         # Se não houver seleção, desabilita o botão
         botao_excel.config(state=tk.DISABLED)
+        botao_historico.config(state=tk.DISABLED)
     
 def adicionar_dados():
     sistema              =   entrada_sistema.get()
@@ -52,8 +134,7 @@ def adicionar_dados():
     conexao.commit()
     # Fechar a conexão
     conexao.close()
-def adicionar_lista_estacao():
-    print("estacao")
+
 
 def adiconar_equipamento():
     
@@ -66,7 +147,7 @@ def adiconar_equipamento():
         tabela2.insert("","end",values=df_selecionados.values.tolist()[0])
         messagebox.showinfo('Mensagem','Eqipamento '+str(df_selecionados.values.tolist()[0][2])+' adicionado com sucesso')
     else:
-        status_var.set("Nenhuma linha selecionada.")
+        messagebox.showerror("Nenhuma linha selecionada.")
 
 def consultar_dados():
     dado_procurado = entrada_consulta.get()
@@ -104,8 +185,6 @@ def remover_linha():
     if selecao:
         tabela2.delete(selecao)
     
-    else:
-        messagebox.showwarning("Nenhuma Seleção", "Por favor, selecione uma linha para excluir.")
 
 def preencher_tabela(df):
     # Limpar a tabela
@@ -140,11 +219,6 @@ def gerar_documentos():
     for indice, sublist in enumerate(lista_equipamentos, start=1):#enumera os intens na lista.
         sublist.insert(0, indice)
 
-    #Geração do Documento Lista de IPs
-    gerar_sistemas_ip(lista_equipamentos,estacao)
-    #Geração do Documento Lista de equipamentos
-    Lista_equipamentos(lista_equipamentos)
-
     lista_TITULOS= []
 
     for i in range(len(lista_equipamentos)):
@@ -154,6 +228,12 @@ def gerar_documentos():
     print(lista_sem_repeticao)
     Gerar_Plano_integração(lista_sem_repeticao,caminho_consulta_plano_integração,caminho_template_plano_integração)
     messagebox.showinfo("Aviso", "Plano de Integração gerado!")
+
+   #Geração do Documento Lista de IPs
+    gerar_sistemas_ip(lista_equipamentos,estacao)
+    #Geração do Documento Lista de equipamentos
+    Lista_equipamentos(lista_equipamentos)
+
 #================================================================================================#
 #                                  INTERFACE GRÁFICA                                             #
 #================================================================================================#
@@ -179,9 +259,6 @@ aba_viw = ttk.Frame(notebook)
 notebook.add(aba_viw, text="Equipamentos Selecionados")
 
 #Aba de recuperação de dados de estação já criada
-
-aba_historico_estacao = ttk.Frame(notebook)
-notebook.add(aba_historico_estacao, text="Histórico de Estações")
 
 listbox = tk.Listbox(aba_viw)
 listbox.grid(row=0, column=0, padx=10, pady=10)
@@ -271,13 +348,13 @@ botao_adicionar_banco = ttk.Button(aba_adicao, text="Adicionar Equipamento ao Ba
 botao_adicionar_banco.grid(row=10, column=0, padx=5, pady=5)
 
 rotulo_consulta = ttk.Label(aba_consulta, text="Consulta:")
-rotulo_consulta.grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
+rotulo_consulta.grid(row=0, column=0, padx=5, pady=5, sticky=tk.N)
 
 entrada_consulta = ttk.Entry(aba_consulta)
-entrada_consulta.grid(row=0, column=1, padx=5, pady=5)
+entrada_consulta.grid(row=1, column=0, padx=5, pady=5, sticky=tk.N)
 
 botao_consultar = ttk.Button(aba_consulta, text="Consultar", command=consultar_dados)
-botao_consultar.grid(row=1, column=1, padx=5, pady=5)
+botao_consultar.grid(row=1, column=1, padx=5, pady=5,sticky=tk.N)
 
 botao_adicionar = ttk.Button(aba_consulta, text="Adicionar equipamento a lista", command=adiconar_equipamento)
 botao_adicionar.grid(row=3, column=0, padx=5, pady=5)
@@ -304,6 +381,8 @@ for col in tabela2["columns"]:
 # Criar a tabela para mostrar os resultados
 tabela = ttk.Treeview(aba_consulta, columns=("Sistema", "Subsistema","Equipamento", "Fabricante","Modelo","Meio Físico","Protocolo","Descrição"))
 tabela.grid(row=2, column=0, columnspan=3, padx=5, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
+aba_consulta.grid_rowconfigure(2, weight=1)
+aba_consulta.grid_columnconfigure(0, weight=1)
 
 # Configurar as colunas da tabela
 tabela.heading("#0", text="Item")
@@ -323,45 +402,30 @@ for col in tabela["columns"]:
 
 # Botão para gerar arquivo Excel com os dados selecionados
 botao_excel = ttk.Button(aba_viw, text="Gerar Documentos",state=tk.DISABLED, command=gerar_documentos)
-botao_excel.grid(row=3, column=1, sticky="w")
+botao_excel.grid(row=3, column=0, sticky="w")
 
 # Botão para remover equipamento da lista
 botao_remover = ttk.Button(aba_viw, text="Remover Equipamento", command=remover_linha)
 botao_remover.grid(row=1, column=0, sticky="w")
 
-# Botão para trazer lista do historico
-botao_remover = ttk.Button(aba_viw, text="Retornar Estação", command=adicionar_lista_estacao)
-botao_remover.grid(row=1, column=1, sticky="w")
-
-# Variável de status para exibir mensagens
-status_var = tk.StringVar()
-status_label = ttk.Label(aba_viw, textvariable=status_var)
-
 # Botão para remover equipamento da lista
-botao_remover = ttk.Button(aba_historico_estacao, text="Selecionar Estação", command=remover_linha)
-botao_remover.grid(row=2, column=0, sticky="n")
+botao_importar = ttk.Button(aba_viw, text="Importar Estação", command=importar_estacao)
+botao_importar.grid(row=1, column=2, sticky="w")
 
-listbox2 = tk.Listbox(aba_historico_estacao)
-listbox2.grid(row=0, column=0, padx=10, pady=10)
+# Botão para trazer lista do historico
+botao_historico = ttk.Button(aba_viw, text="Remover todos os equipamentos",command=remover_todos_itens)
+botao_historico.grid(row=3, column=2, sticky="w")
 
-for item in consulta_tabelas():
-    listbox2.insert(tk.END, item)
+# Botão para trazer lista do historico
+botao_historico = ttk.Button(aba_viw, text="Exportar CSV", state=tk.DISABLED,command=historico_estacao)
+botao_historico.grid(row=3, column=1, sticky="w")
 
-# Treeview
-tabela3 = ttk.Treeview(aba_historico_estacao, columns=("Item", "Estação"), show="headings")
-tabela3.grid(row=3, column=0, columnspan=2, padx=5, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
 
-# Definindo cabeçalhos das colunas
-tabela3.heading("Item", text="Item")
-tabela3.heading("Estação", text="Estação")
+# Botão para criar pastas
+criar_pasta = ttk.Button(aba_viw, text="Criar Pastas e importar Lista de documentos", command=selecionar_arquivo)
+criar_pasta.grid(row=0, column=2, sticky="w")
 
-# Ajustando a expansão da Treeview
-aba_historico_estacao.grid_rowconfigure(2, weight=1)
-aba_historico_estacao.grid_columnconfigure(0, weight=1)
-
-# Exemplo de inserção de dados na Treeview
-tabela3.insert('', 'end', values=("1", "Estação A"))
-tabela3.insert('', 'end', values=("2", "Estação B"))
-
+#lbl_status1 = tk.Label(aba_historico_estacao, text="", fg="green")
+#lbl_status1.pack()
 # Iniciar a interface
 janela.mainloop()
