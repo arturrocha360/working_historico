@@ -1,0 +1,49 @@
+Telecom,SCAP,Bloqueio-01,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 01. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-02,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 02. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-03,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 03. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-04,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 04. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-05,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 05. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-06,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 06. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-07,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 07. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-08,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 08. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-09,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 09. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-10,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 10. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,BLOQUEIO-11,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 11. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Energia,Sala Técnica,QGD-CLP-01\BC-01,Altus,PO 3342 UCP,Ethernet,Alnet,Bomba de Consumo 01. Monitorada pelo SACB.,SCL,QGD,QGD - Quadro geral de distribuição - PO3342
+Energia,Sala Técnica,QGD-CLP-01\BC-02,Altus,PO 3342 UCP,Ethernet,Alnet,Bomba de Consumo 02. Monitorada pelo SACB.,SCL,QGD,QGD - Quadro geral de distribuição - PO3342
+Energia,Sala Técnica,QGD-CLP-01\BD-01,Altus,PO 3342 UCP,Ethernet,Alnet,Bomba de Drenagem 01. Monitorada pelo SACB.,SCL,QGD,QGD - Quadro geral de distribuição - PO3342
+Energia,Sala Técnica,QGD-CLP-01\BD-02,Altus,PO 3342 UCP,Ethernet,Alnet,Bomba de Drenagem 02. Monitorada pelo SACB.,SCL,QGD,QGD - Quadro geral de distribuição - PO3342
+Energia,Casa De Bombas,SACB-01,Altus,PO 3342 UCP,Ethernet,Alnet,Sistema de Alimentação e Controle de Bombas. ,SCL,-,QGD - Quadro geral de distribuição - PO3342
+Energia,Sala de Baixa Tensão,QDBI\BI-01,Altus,PO3342 UCP,Ethernet,Alnet,Bomba de Incêndio 01. Monitorada pelo QDBI.,SCL,-,QDBI - Quadro de distribuição de bomba de incêndio
+Energia,Sala de Baixa Tensão,QDBI\BI-02,Altus,PO3342 UCP,Ethernet,Alnet,Bomba de Incêndio 02. Monitorada pelo QDBI.,SCL,-,QDBI - Quadro de distribuição de bomba de incêndio
+Energia,Sala de Baixa Tensão,QDBI,Altus,PO3342 UCP,Ethernet,Alnet,Quadro de Distribuição de Bombas de Incêndio,SCL,-,QDBI e SACB - ALTUS PO3142
+Telecom,SSX,SSX-01,-,-,Ethernet,SNMP,Sistema de Solicitação de Auxílio ao Usuário - X pontos.,SCL,-,SSX - Sistema de Solicitação de Auxílio ao Usuário
+Energia,Cabine Primária,CP-RP-01,Pextron,URP 1439T,RS-485,Modbus RTU,Relé de Proteção da Cabine Primária.,SCL,-,Cabine Primária - Relé de Proteção
+Telecom,SME,SME-01,-,-,Ethernet,WebBrowser,Servidor do sistema de câmeras - X Câmeras.,SME,-,Câmeras - CFTV / SME / SVMD
+Civil,SSO/SDAI,SDAI-01,SIMPLEX,4010ES,Ethernet,Modbus TCP,Central de Detecção e Alarme de Incêndio,SCL,-,Central de incêndio
+Energia,Sala Técnica ,SCL-REM-02\INV-01,FSE ,390185 (15 KVA),Sinal Elétrico,-,Inversor 01. Monitorado na remota 02.,SCL,REMOTA 2,SCL-REM-02\INV-01  Inversor 01. Monitorado na remota 02.
+Energia,CD90,CD90-ICHE-01,-,-,RS-485,Modbus RTU,Chave Estática do CD90.,SCL,-,CD90-ICHE-01  Chave Estática do CD90.
+Auxiliares,Mezanino / Plataforma,EL-01,OTIS,GCA26800KX1,Ethernet,Webservice,Elevador 01. ,SCL,-,Elevador - 01 - OTIS GCA26800KX1
+Auxiliares,Mezanino / Plataforma,EL-02,OTIS,GCA26800KX1,Ethernet,Webservice,Elevador 01. ,SCL,-,Elevador - 01 - OTIS GCA26800KX1
+Auxiliares,Mezanino / Plataforma,EL-02,OTIS,GCA26800KX1,Ethernet,Webservice,Elevador 01. ,SCL,-,Elevador - 01 - OTIS GCA26800KX1
+Auxiliares,Mezanino / Plataforma,ER-01,OTIS,OTIS/XOPE-1000-29,RS-485,Modbus RTU,Escada Rolante 01. ,SCL,-,Escada Rolante 01 – OTIS
+Auxiliares,Mezanino / Plataforma,ER-02,OTIS,OTIS/XOPE-1000-29,RS-485,Modbus RTU,Escada Rolante 02. ,SCL,-,Escada Rolante 02 – OTIS
+Auxiliares,Sala Gerador,USCA-01,KVA,K21,RS-485,Modbus RTU,Gerador de Energia.,SCL,-,Inversores e Chave estática
+Energia,Sala de Baixa Tensão,MME-01,KRON,MULT-K ,RS-485,Modbus RTU,Multimedidor do QGD,SCL,-,MME - Multimedidor - MULT-K KRON
+Energia,Sala Baixa Tensão,SCL-REM-01\PAB-01,-,-,Sinal Elétrico,-,Painel de Alimentação de Bloqueios. Monitorado na remota 01.,SCL,REMOTA 1,PAB – Painel de Alimentação de Bloqueios REM - 02
+Energia,Sala Baixa Tensão,SCL-REM-01\PAC-01,-,-,Sinal Elétrico,-,Painel Carregador de Baterias. Monitorado na remota 01.,SCL,REMOTA 1,SCL-REM-01\PAC-01  Painel Carregador de Baterias. Monitorado na remota 01.
+Energia,Salas Técnicas,SCL-REM-01\PDF-01,-,-,Sinal Elétrico,-,Painel de Força 01. Monitorado na remota 01.,SCL,REMOTA 1,SCL-REM-01\PDF-01  Painel de Força 01. Monitorado na remota 01.
+Energia,Sala Técnica,SCL-REM-01\PESS-01,-,-,Sinal Elétrico,-,Painel Essencial. Monitorado na remota 01.,SCL,REMOTA 1,PESS – Painel Essencial
+Energia,Sala de Baixa Tensão,SCL-REM-01\QDCC-01,-,-,Sinal Elétrico,-,Quadro de Distribuição Contínua. Monitorado na remota de Adequações,SCL,REMOTA 1,SCL-REM-01\QDCC-01  Quadro de Distribuição Contínua. Monitorado na remota de Adequações
+Energia,Sala Baixa Tensão,QGD-CLP-01\QGD-MME-01,Altus,PO3142UCP,RS-485,Modbus RTU,"Multimedidor do QGD, monitorado pelo CLP do QGD.",SCL,QGD,QGD - Quadro geral de distribuição - ALTUS PO3142
+Energia,Sala Técnica,SCL-REM-01\PL-01,-,-,Sinal Elétrico,-,Painel de Luz 01. Monitorado na remota 01.,SCL,REMOTA 1,SCL-REM-01\PL-01  Painel de Luz 01. Monitorado na remota 01.
+Civil,Mezanino / Plataforma,SCL-REM-02\PL-02,-,-,Sinal Elétrico,-,Painel de Luz 02. Monitorado na remota 02.,SCL,REMOTA 2,SCL-REM-02\PL-02  Painel de Luz 02. Monitorado na remota 02.
+Energia,Plataforma,SCL-REM-02\PL-03,-,-,Sinal Elétrico,-,Painel de Luz 03. Monitorado na remota 02.,SCL,REMOTA 2,SCL-REM-02\PL-03  Painel de Luz 03. Monitorado na remota 02.
+Energia,Salas Técnicas,SCL-REM-01/RET-01,SAFT,TPR,Sinal Elétrico,-,"Retificador 01, monitorado pela remota.",SCL,REMOTA 1,"SCL-REM-01/RET-01  Retificador 01, monitorado pela remota."
+Energia,Salas Técnicas,SCL-REM-01/RET-02,SAFT,TPR,Sinal Elétrico,-,"Retificador 02, monitorado pela remota.",SCL,REMOTA 1,"SCL-REM-01/RET-02  Retificador 02, monitorado pela remota."
+Energia,Salas Técnicas,SCL-REM-01/RET-01,SAFT,TPR,Sinal Elétrico,-,"Retificador 01, monitorado pela remota.",SCL,REMOTA 1,"SCL-REM-01/RET-01  Retificador 01, monitorado pela remota."
+Telecom,SCA,SCA-01,-,-,Ethernet,Webservice,Servidor do sistema de controle de acesso - X Pontos.,SCA,-,Sistema de Controle de Acesso
+Telecom,SMM,SMM-01,-,-,Ethernet,Webservice,Servidor do Sistema de Multimiídia.,SMM,-,Sistema de Multimídia (PMV/SON/CRONO)
+Auxiliares,Salas Técnicas,ST-TIT-01,-,-,Ethernet,SNMP,Sensor de Temperatura 01 das Salas Técnicas.,SCL,-,Temperatura de Salas Técnicas
+Auxiliares,Salas Técnicas,ST-TIT-02,-,-,Ethernet,SNMP,Sensor de Temperatura 02 das Salas Técnicas.,SCL,-,Temperatura de Salas Técnicas
+Energia,Sala Técnica,SCL-REM-01\PVST-01,-,-,Sinal Elétrico,-,Painel de Ventilação das Salas Técnicas. Monitorado na remota 01,SCL,REMOTA 1,SCL-REM-01\PVST-01  Painel de Ventilação das Salas Técnicas. Monitorado na remota 01

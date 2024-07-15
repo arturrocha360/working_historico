@@ -1,0 +1,7 @@
+Telecom,SCAP,Bloqueio-01,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 01. Integração pelo banco Firebird,SCAP.1,-.1,Bloqueios
+Telecom,SCAP,Bloqueio-02,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 02. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-03,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 03. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-04,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 04. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Energia,CD90,CD90-CIF-02,Adelco,IEM2000,RS-232,Modbus RTU,Conversor 02 do CD90.,SCL,-,CD-90 – Inversor – IEM-2000
+Energia,CD90,CD90-CIF-02,Ctrl Tech,CCF 40.0,RS-485,Modbus RTU,Conversor/Inversor de frequência do CD90.,SCL,-,-
+Energia,CD90,CD90-CIF-02,Adelco,IEM2000,RS-485,Modbus RTU,Conversor/Inversor de frequência do CD90.,SCL,-,CD-90 – Inversor – IEM-2000

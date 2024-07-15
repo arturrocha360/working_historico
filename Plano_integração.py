@@ -10,7 +10,7 @@ def Gerar_Plano_integração(equipamentos,path_consulta,path_template):
     doc = word.Documents.Open(path_consulta)  #diretório do documento de consulta
     
     #equipamentos=["Inversores", "Chave Estática", "Cabine Primária","Transformador","PESS – Painel Essencial"]
-
+    print(path_template)
     for equipamento in equipamentos_invertido:
         word.Run("copy_paste_Plano",equipamento,path_template)
 

@@ -6,12 +6,51 @@ from tkinter import messagebox
 from classificacao_lista_ip import gerar_sistemas_ip
 from gerador_excel import Lista_equipamentos
 from Plano_integração import Gerar_Plano_integração
-from Caminhos_documentos import caminho_template_plano_integração,caminho_consulta_plano_integração
+from Caminhos_documentos import caminho_template_plano_integração,caminho_consulta_plano_integração,caminho_template_Lista_equipamentos,caminho_lista_equipamentos
 import csv
 from tkinter import filedialog
 import shutil
 import os
 from macro import roda_script
+
+
+class DraggableTreeview(ttk.Treeview):
+    def __init__(self, master=None, **kwargs):
+        super().__init__(master, **kwargs)
+        self.bind("<Button-1>", self.on_click)
+        self.bind("<B1-Motion>", self.on_drag)
+        self.bind("<ButtonRelease-1>", self.on_drop)
+        self.drag_data = {"item": None, "index": None}
+
+    def on_click(self, event):
+        # Obter o item clicado
+        self.drag_data["item"] = self.identify_row(event.y)
+        self.drag_data["index"] = self.index(self.drag_data["item"])
+
+    def on_drag(self, event):
+        # Mover o item enquanto arrasta
+        item = self.drag_data["item"]
+        if item:
+            self.move(item, '', self.index(self.identify_row(event.y)))
+
+    def on_drop(self, event):
+        # Soltar o item no novo local
+        item = self.drag_data["item"]
+        if item:
+            self.drag_data["item"] = None
+            self.drag_data["index"] = None
+
+# Função para inserir dados na árvore
+def insert_data(tree):
+    tree.insert('', 'end', values=('1', 'John Doe', '28'))
+    tree.insert('', 'end', values=('2', 'Jane Smith', '34'))
+    tree.insert('', 'end', values=('3', 'Mike Johnson', '45'))
+
+
+
+
+
+
 
 
 
@@ -20,21 +59,26 @@ def selecionar_arquivo():
 
     caminho = os.path.join(diretorio_arquivo,'Estacao','ESTACAO')
 
-    shutil.rmtree(caminho)
+    
 
     pastas=["Lista de Cabos","Lista de Entradas","Lista de Equipamentos","Lista de IP","Lista de Materiais","Mapa de Comunicação",
         "Plano de Integração","Procedimentos de Comissionamento","Procedimentos de Pré","Relatório de Levamentamento"]
 # Especifica o caminho da pasta a ser criada
 
 # Verifica se o diretório não existe e, em seguida, o cria
-    for pasta in pastas:
-        os.makedirs(caminho+"/"+pasta)
-    arquivo_selecionado = filedialog.askopenfilename(initialdir="/", title="Selecione o arquivo")
+    
+    arquivo_selecionado = filedialog.askopenfilename(title="Selecione um arquivo",
+        filetypes=(("Arquivos Word", "*.docx"),))
+    print(arquivo_selecionado)
     if arquivo_selecionado:
+        
+        shutil.rmtree(caminho)
+        for pasta in pastas:
+            os.makedirs(caminho+"/"+pasta)
         origem = arquivo_selecionado
         shutil.copy(origem, caminho)
         roda_script()
-    
+       
 
 def remover_todos_itens():
     # Remove todos os itens da tabela
@@ -219,17 +263,23 @@ def gerar_documentos():
     for indice, sublist in enumerate(lista_equipamentos, start=1):#enumera os intens na lista.
         sublist.insert(0, indice)
 
-    lista_TITULOS= []
+    lista_TITULOS = []
+    
 
     for i in range(len(lista_equipamentos)):
         lista_TITULOS.append(lista_equipamentos[i][11])
+        
+    lista_sem_repeticao = []
+    for item in lista_TITULOS:
+        if item not in  lista_sem_repeticao:
+            lista_sem_repeticao.append(item)
 
-    lista_sem_repeticao = list(set(lista_TITULOS))
-    print(lista_sem_repeticao)
+
+    
     Gerar_Plano_integração(lista_sem_repeticao,caminho_consulta_plano_integração,caminho_template_plano_integração)
     messagebox.showinfo("Aviso", "Plano de Integração gerado!")
 
-   #Geração do Documento Lista de IPs
+    #Geração do Documento Lista de IPs
     gerar_sistemas_ip(lista_equipamentos,estacao)
     #Geração do Documento Lista de equipamentos
     Lista_equipamentos(lista_equipamentos)
@@ -360,8 +410,10 @@ botao_adicionar = ttk.Button(aba_consulta, text="Adicionar equipamento a lista",
 botao_adicionar.grid(row=3, column=0, padx=5, pady=5)
 
 # Criar a tabela para mostrar os resultados
-tabela2 = ttk.Treeview(aba_viw, columns=("Sistema", "Subsistema","Equipamento", "Fabricante","Modelo","Meio Físico","Protocolo","Descrição"))
+tabela2 = DraggableTreeview(aba_viw, columns=("Sistema", "Subsistema","Equipamento", "Fabricante","Modelo","Meio Físico","Protocolo","Descrição"))
 tabela2.grid(row=2, column=0, columnspan=3, padx=5, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
+aba_viw.grid_rowconfigure(2, weight=1)
+aba_viw.grid_columnconfigure(0, weight=1)
 
 # Configurar as colunas da tabela
 tabela2.heading("#0", text="Item")
@@ -377,6 +429,7 @@ tabela2.heading("Descrição", text="Descrição")
 tabela2.column("#0",width=50, minwidth=100, stretch=tk.NO)
 for col in tabela2["columns"]:
     tabela2.column(col,width=150, minwidth=100, stretch=tk.YES)
+
 
 # Criar a tabela para mostrar os resultados
 tabela = ttk.Treeview(aba_consulta, columns=("Sistema", "Subsistema","Equipamento", "Fabricante","Modelo","Meio Físico","Protocolo","Descrição"))
@@ -399,6 +452,7 @@ tabela.heading("Descrição", text="Descrição")
 tabela.column("#0",width=50, minwidth=100, stretch=tk.NO)
 for col in tabela["columns"]:
     tabela.column(col,width=150, minwidth=100, stretch=tk.YES)
+
 
 # Botão para gerar arquivo Excel com os dados selecionados
 botao_excel = ttk.Button(aba_viw, text="Gerar Documentos",state=tk.DISABLED, command=gerar_documentos)

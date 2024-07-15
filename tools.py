@@ -3,12 +3,9 @@ from docx.shared import Pt
 from docx.enum.text import  WD_PARAGRAPH_ALIGNMENT
 from tkinter import messagebox
 import sqlite3
-from Caminhos_documentos import caminho_template_lista_ip
+from Caminhos_documentos import caminho_template_lista_ip,caminho_tabela_plano_integração
 
-""" Exemplo de lista que deve ser passada como argumento na função
-lista_conteudo =[["ES_QTU_SWITCHSCL_01","SWITCH 1 SCL","10.177.50.130","255.255.255.128","10.177.50.129","10.177.50.128","809"],
-                 ["ES_QTU_SWITCHSCL_02","SWITCH 2 SCL","10.177.50.130","255.255.255.128","10.177.50.129","10.177.50.128","809"]]
-"""
+
 
 def ip_consulta(estacao, Descricao_Sistema):
     # Conexão com o banco de dados SQLite3
@@ -20,8 +17,8 @@ def ip_consulta(estacao, Descricao_Sistema):
     consulta = f"""
             SELECT *
             FROM tabela_ip
-            WHERE Estação LIKE '%{estacao}%' AND
-                Descrição_Sistema LIKE '%{Descricao_Sistema}%'   
+            WHERE Estação = '{estacao}' AND
+                Descrição_Sistema = '{Descricao_Sistema}'   
                     
             """
     # Executar a consulta
@@ -36,8 +33,6 @@ def ip_consulta(estacao, Descricao_Sistema):
 
 def criar_wordip(lista_recebida):
     # Carregue o documento existente
-    
-    
     doc = Document(caminho_template_lista_ip)
     # Acesse a tabela existente (no caso do documento lista de IPs a tabela 5 (4 em python) é a tabela que deve adicionar conteúdo)
     tabela = doc.tables[4]
@@ -80,3 +75,34 @@ def gerar_listaip(tag_,descricao_,ip_,mascara_,gateway_,rede_,id_vlan_):
         matriz.append(i)
     matriz_invertida=list(zip(*matriz))
     criar_wordip(matriz_invertida)
+
+def item8_plan_int(lista_recebida):
+    # Carregue o documento existente
+    doc = Document(caminho_tabela_plano_integração)
+    # Acesse a tabela existente (no caso do documento lista de IPs a tabela 5 (4 em python) é a tabela que deve adicionar conteúdo)
+    tabela = doc.tables[-1]
+    invertido = list(zip(*lista_recebida))
+    # Adicione conteúdo a células específicas da tabela
+    
+    for i in invertido:
+        nova_linha = tabela.add_row().cells
+        nova_linha[0].text = i[0]
+        nova_linha[1].text = i[1]
+        nova_linha[2].text = i[2]
+        nova_linha[3].text = i[3]
+        
+    fonte = 'Arial'  # Substitua 'Arial' pela fonte desejada
+    tamanho = Pt(7)  # Substitua 12 pelo tamanho de fonte desejado
+
+    tabela.style = 'Table Grid'
+
+    for row in tabela.rows:
+        for cell in row.cells:
+            cell.paragraphs[0].alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+            for paragraph in cell.paragraphs:
+                for run in paragraph.runs:
+                    run.font.name = fonte
+                    run.font.size = tamanho
+
+    # Salve o documento atualizado
+    doc.save(caminho_tabela_plano_integração)

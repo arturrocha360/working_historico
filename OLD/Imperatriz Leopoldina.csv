@@ -1,0 +1,45 @@
+Energia,Sala Telecom - Seccionadoras de Via 3kV,PCSV-UTR-01,"Telvent/
+Schneider",SAITEL DP2000,Ethernet,IEC 60870 TCP/IP -5-104,Controlador das Chaves Seccionadoras de Via.,SCL,-,RA - Chave Seccionadora de Via 3Kv
+Energia,Sala de Média Tensão - Cabine Primária,CP-RP-01,Schneider,EASERGY P3F30,Ethernet,Modbus TCP,Relé de Proteção do disjuntor da Cabine Primária.,SCL,-,Cabine Primária – Relé Schneider e Varixx
+Energia,Sala de Média Tensão - Cabine Primária,CP-RT-01,Varixx,VZX\B1\U,RS-485,Modbus RTU,Relé de Temperatura do disjuntor da Cabine Primária.,SCL,-,Transformador - Thermitronic e Varixx
+Energia,Sala de Média Tensão - Transformador,CP-MT-01,Thermitronic,TH104BUS,RS-485,Modbus RTU,Monitor de Temperatura do Transformador de Entrada.,SCL,-,-
+Energia,Sala Técnica,QGD-CLP-01,Altus,AL 2003,Ethernet,ALNET II,CLP do Quadro Geral de Distribuição.,SCL,QGD,-
+Energia,QGD,QGD-CLP-01\QGD-MME-01,Altus,NX3010,Ethernet,Modbus TCP,"Multimedidor de Energia do QGD, integrado ao CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Energia,QGD,QGD-CLP-01\QGD-RT-01,Altus,NX3010,Ethernet,Modbus TCP,"Relé de Proteção de Temperatura do QGD, integrado ao CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Energia,QGD,QGD-CLP-01\QGD-RA-01,Altus,NX3010,Ethernet,Modbus TCP,"Relé de Proteção de Arco do QGD, integrado ao CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Energia,Salas Técnicas,QGD-CLP-01\QDCC-01,Altus,NX3010,Ethernet,Modbus TCP,"Quadro de Distribuição de Corrente Contínua, monitorado pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Energia,Salas Técnicas,QGD-CLP-01\PDF-01,Altus,NX3010,Ethernet,Modbus TCP,"Painel de Força, monitorado pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Energia,Salas Técnicas,QGD-CLP-01\PAB-01,Altus,NX3010,Ethernet,Modbus TCP,"Painel de Alimentação de Bloqueios, monitorado pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Energia,Salas Técnicas,QGD-CLP-01\RET-01,FRANDOR,3RDI125VB260ND,Ethernet,Modbus TCP,"Retificador 01 das Salas Técnicas, monitorado pelo CLP do QGD.",SCL,QGD,-
+Energia,Salas Técnicas,QGD-CLP-01\RET-02,FRANDOR,3RDI125VB260ND,Ethernet,Modbus TCP,"Retificador 02 das Salas Técnicas, monitorado pelo CLP do QGD.",SCL,QGD,-
+Energia,Salas Técnicas,QGD-CLP-01\INV-01,FRANDOR,GICT0386,Ethernet,Modbus TCP,"Inversor 01, monitorado pelo CLP do QGD.",SCL,QGD,-
+Energia,Salas Técnicas,QGD-CLP-01\PVST-01,Altus,NX3010,Ethernet,Modbus TCP,"Painel Ventilação Salas Técnicas / Painel Controle Ar Condicionado.
+Monitorado pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Auxiliares,Sala Gerador,USCA-01,KVA,K30,RS-485,Modbus RTU,Gerador de Energia.,SCL,-,Inversores e Chave estática
+Auxiliares,Mezanino / Plataforma,EL-01,VILLARTA,COMPAQ 240,Ethernet,WebService,Elevador 03.,SCL,-,Elevador - 01 - VILLARTA COMPAQ 240
+Auxiliares,Mezanino / Plataforma,EL-02,VILLARTA,COMPAQ 240,Ethernet,WebService,Elevador 02.,SCL,-,Elevador – 02 – VILLARTA COMPAQ 240
+Auxiliares,Mezanino / Plataforma,EL-03,VILLARTA,COMPAQ 240,Ethernet,WebService,Elevador 03.,SCL,-,Elevador – 03 – VILLARTA COMPAQ 240
+Auxiliares,Salas Técnicas,ST-TIT-01,-,-,Ethernet,SNMP,Sensor de Temperatura 01 das Salas Técnicas.,SCL,-,Temperatura de Salas Técnicas
+Auxiliares,Salas Técnicas,ST-TIT-02,-,-,Ethernet,SNMP,Sensor de Temperatura 02 das Salas Técnicas.,SCL,-,Temperatura de Salas Técnicas
+Civil,Sala de Baixa Tensão - QGD,QGD-CLP-01\PL-01,Altus,NX3010,Ethernet,Modbus TCP,"Painel de Luz 01.
+Monitorado pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Civil,Sala de Baixa Tensão - QGD,QGD-CLP-01\PL-02,Altus,NX3010,Ethernet,Modbus TCP,"Painel de Luz 02.
+Monitorado pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Civil,*Pendente,QGD-CLP-01\PL-E,Altus,NX3010,Ethernet,Modbus TCP,"Painel de Luz E.
+Monitorado pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Civil,SSO/SDAI,SDAI-01,SIMPLEX,4010ES,Ethernet,Modbus TCP,Central de Detecção e Alarme de Incêndio,SCL,-,Central de incêndio
+Civil,Salas Técnicas,QGD-CLP-01\BI-01,Altus,NX3010,Ethernet,Modbus TCP,"Bomba de incêndio 01, monitorada pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Civil,Salas Técnicas,QGD-CLP-01\BI-02,Altus,NX3010,Ethernet,Modbus TCP,"Bomba de incêndio 02, monitorada pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Civil,Salas Técnicas,QGD-CLP-01\BC-01,Altus,NX3010,Ethernet,Modbus TCP,"Bomba de consumo 01, monitorada pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Civil,Salas Técnicas,QGD-CLP-01\BC-02,Altus,NX3010,Ethernet,Modbus TCP,"Bomba de consumo 02, monitorada pelo CLP do QGD.",SCL,QGD,QGD – Quadro geral de distribuição – NX3010
+Telecom,SCAP,Bloqueio-01,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 01. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-02,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 02. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-03,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 03. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-04,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 04. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-05,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 05. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-06,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 06. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-07,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 07. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SMM,SMM-01,-,-,Ethernet,Webservice,Servidor do Sistema de Multimiídia.,SMM,-,None
+Telecom,SME,SME-01,-,-,Ethernet,WebBrowser,Servidor do sistema de câmeras - X Câmeras.,SME,-,Câmeras - CFTV / SME / SVMD
+Telecom,SCA,SCA-01,-,-,Ethernet,Webservice,Servidor do sistema de controle de acesso - X Pontos.,SCA,-,None
+Telecom,SSX,SSX-01,-,-,Ethernet,SNMP,Sistema de Solicitação de Auxílio ao Usuário - X pontos.,SCL,-,SSX - Sistema de Solicitação de Auxílio ao Usuário

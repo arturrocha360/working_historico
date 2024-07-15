@@ -1,0 +1,46 @@
+Energia,Sala Técnica,SACB\BC-02,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Bomba de Consumo 02. Monitorada pelo SACB.,SCL,SACB,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Casa De Bombas,SACB-01,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Sistema de Alimentação e Controle de Bombas. ,SCL,SACB,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala Técnica,SACB\BC-01,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Bomba de Consumo 01. Monitorada pelo SACB.,SCL,SACB,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala Técnica,SACB\BD-01,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Bomba de Drenagem 01. Monitorada pelo SACB.,SCL,SACB,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala Técnica,SACB\BD-01,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Bomba de Drenagem 01. Monitorada pelo SACB.,SCL,SACB,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala Técnica,SACB\BAR-01,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Bomba de Reuso 01. Monitorada pelo SACB.,SCL,SACB,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala Técnica,SACB\BAR-02,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Bomba de Reuso 02. Monitorada pelo SACB.,SCL,SACB,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala de Baixa Tensão,QDBI-01,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Quadro de Distribuição de Bombas de Incêndio,SCL,QDBI,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala de Baixa Tensão,QDBI\BI-01,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Bomba de Incêndio 01. Monitorada pelo QDBI.,SCL,QDBI,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala de Baixa Tensão,QDBI\BI-02,MOELLER,PS4-201-MM,Ethernet,Suconet-K,Bomba de Incêndio 02. Monitorada pelo QDBI.,SCL,QDBI,Sistema de Alimentação e Controle de Bombas (SACB) e Quadro de Distribuição de Bombas de Incêndio (QDBI)
+Energia,Sala Baixa Tensão,QGD-CLP-01,MOELLER,PS4-201-MM,Ethernet,Suconet-K,CLP do Quadro Geral de Distribuição.,SCL,QGD,QGD - Quadro geral de distribuição 
+Energia,Sala de Baixa Tensão,SCL-REM-01\CH-01,FSE ,TSE 15.0-LI25M,Sinal Elétrico,-,Chave Estática. Monitorado pela remota 01.,SCL,REMOTA 1,Chave Estática 01 – TSE 15.0-LI25M
+Energia,Salas Técnicas,SCL-REM-01\INV-01,FSE , TSE 15.0-LI25M,Sinal Elétrico,-,Inversor 01. Monitorado pela remota 01.,SCL,REMOTA 1,Inversor 01 – TSE 15.0-LI25M
+"Energia,Salas Técnicas,SCL-REM-01/RET-01,FSE TPR,TPR125VB300ZD,Sinal Elétrico,-,""Retificador 01, monitorado pela remota 01."",SCL,REMOTA 1,Retificador 01 – TPR125VB300ZD",nan,nan,nan,nan,nan,nan,nan,nan,nan,nan
+"Energia,Salas Técnicas,SCL-REM-01/RET-02,FSE TPR,TPR125VB300ZD,Sinal Elétrico,-,""Retificador 02, monitorado pela remota 01."",SCL,REMOTA 1,Retificador 02 – TPR125VB300ZD",nan,nan,nan,nan,nan,nan,nan,nan,nan,nan
+Energia,Salas Técnicas,SCL-REM-01\PAB-01,-,-,Sinal Elétrico,-,Painel de Alimentação de Bloqueios. Monitorado pela remota 01.,SCL,REMOTA 1,PAB – Painel de Alimentação de Bloqueios 
+Energia,Sala Baixa Tensão,SCL-REM-01\PAC-01,-,-,Sinal Elétrico,-,Painel Carregador de Baterias. Monitorado na remota 01.,SCL,REMOTA 1,SCL-REM-01\PAC-01  Painel Carregador de Baterias. Monitorado na remota 01.
+Energia,Salas Técnicas,SCL-REM-01\PDF-01,-,-,Sinal Elétrico,-,Painel de Força 01. Monitorado na remota 01.,SCL,REMOTA 1,SCL-REM-01\PDF-01  Painel de Força 01. Monitorado na remota 01.
+Energia,SSO,SCL-REM-01\PDF-02,-,-,Sinal Elétrico,-,Painel de Força 02. Monitorado na remota 01.,SCL,REMOTA 1,SCL-REM-01\PDF-02  Painel de Força 02. Monitorado na remota 01.
+Energia,Salas Técnicas,SCL-REM-01\PESS-01,-,-,Sinal Elétrico,-,Painel Essencial. Monitorado pela remota 01.,SCL,REMOTA 1,PESS – Painel Essencial
+Energia,Salas Técnicas,SCL-REM-01\QDCC-01,-,-,Sinal Elétrico,-,Quadro de Distribuição Contínua. Monitorado pela remota 01.,SCL,REMOTA 1,QDCC –  Quadro de Distribuição de Corrente Contínua 
+Energia,Sala Técnica,SCL-REM-01\PVST-01,-,-,Sinal Elétrico,-,Painel de Ventilação das Salas Técnicas. Monitorado na remota 01,SCL,REMOTA 1,SCL-REM-01\PVST-01  Painel de Ventilação das Salas Técnicas. Monitorado na remota 01
+Energia,Cabine Primária,CP-RP-01,Pextron,URP 1439T,RS-485,Modbus RTU,Relé de Proteção da Cabine Primária.,SCL,-,Cabine Primária - Relé de Proteção
+Energia,Cabine Primária - Transformador,CP-RT-01,Pextron,PCPT4,RS-485,Modbus RTU,Relé de Proteção Térmica do Transformador de Entrada. ,SCL,-,Transformador - Relé Pextron
+Energia,Sala Técnica,SCL-REM-01\PL-01,-,-,Sinal Elétrico,-,Painel de Luz 01. Monitorado na remota 01.,SCL,REMOTA 1,SCL-REM-01\PL-01  Painel de Luz 01. Monitorado na remota 01.
+Civil,Mezanino / Plataforma,SCL-REM-02\PL-02,-,-,Sinal Elétrico,-,Painel de Luz 02. Monitorado na remota 02.,SCL,REMOTA 2,SCL-REM-02\PL-02  Painel de Luz 02. Monitorado na remota 02.
+Energia,Sala Técnica,SCL-REM-01\PL-03,-,-,Sinal Elétrico,-,Painel de Luz 03. Monitorado na remota 01.,SCL,REMOTA 1,SCL-REM-01\PL-03  Painel de Luz 03. Monitorado na remota 01.
+Civil,Sala Baixa Tensão,SCL-REM-01\PL-04,-,-,Sinal Elétrico,-,Painel de Luz 04. Monitorado na remota 04.,SCL,REMOTA 1,SCL-REM-01\PL-04  Painel de Luz 04. Monitorado na remota 04.
+Civil,SSO/SDAI,SDAI-01,SIMPLEX,4010ES,Ethernet,Modbus TCP,Central de Detecção e Alarme de Incêndio,SCL,-,Central de incêndio
+Auxiliares,Mezanino / Plataforma,EL-01,OTIS,GCA26800KX1,RS-485,*Pendente,Elevador 01. ,SCL,-,Elevador – 01 GCA26800KX1
+Auxiliares,Mezanino / Plataforma,EL-02,OTIS,GCA26800KX1,RS-485,*Pendente,Elevador 02. ,SCL,-,Elevador – 02 GCA26800KX2
+Auxiliares,Mezanino / Plataforma,EL-03,OTIS,GCA26800KX1,RS-485,*Pendente,Elevador 03. ,SCL,-,Elevador – 03 GCA26800KX3
+Energia,Sala Gerador,USCA-01,CUMMINS ,HMI211,RS-485,Modbus RTU,Gerador de Energia.,SCL,-,Gerador - Cummins
+Auxiliares,Salas Técnicas,ST-TIT-01,-,-,Ethernet,SNMP,Sensor de Temperatura 01 das Salas Técnicas.,SCL,-,Temperatura de Salas Técnicas
+Auxiliares,Salas Técnicas,ST-TIT-02,-,-,Ethernet,SNMP,Sensor de Temperatura 02 das Salas Técnicas.,SCL,-,Temperatura de Salas Técnicas
+Telecom,SCA,SCA-01,-,-,Ethernet,Webservice,Servidor do sistema de controle de acesso - X Pontos.,SCA,-,Sistema de Controle de Acesso
+Telecom,SME,SME-01,-,-,Ethernet,WebBrowser,Servidor do sistema de câmeras - X Câmeras.,SME,-,Câmeras - CFTV / SME / SVMD
+Telecom,SMM,SMM-01,-,-,Ethernet,Webservice,Servidor do Sistema de Multimiídia.,SMM,-,Sistema de Multimídia (PMV/SON/CRONO)
+Telecom,SSX,SSX-01,-,-,Ethernet,SNMP,Sistema de Solicitação de Auxílio ao Usuário - X pontos.,SCL,-,SSX - Sistema de Solicitação de Auxílio ao Usuário
+Telecom,SCAP,Bloqueio-01,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 01. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-02,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 02. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-03,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 03. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-04,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 04. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-05,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 05. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Telecom,SCAP,Bloqueio-06,T'TRANS,-,Ethernet,Banco de Dados Firebird,SCAP - Bloqueio 06. Integração pelo banco Firebird,SCAP,-,Bloqueios
+Energia,Cabine Primária - Transformador,CP-MME-01,Schneider,PM710,RS-485,Modbus RTU,Multimedidor do Transformador de Entrada. ,SCL,-,Multimedidor do QGD - Merlin Gerin PowerLogic PM710

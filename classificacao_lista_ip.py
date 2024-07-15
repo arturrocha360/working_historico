@@ -1,12 +1,12 @@
 
-from tools import gerar_listaip,ip_consulta
+from tools import gerar_listaip,ip_consulta,item8_plan_int
 
 #essa função recebe um ip_inicial e sua quantidade e gera uma lista de ips
 def gerador_ips(ip_inicial,quantidade):
   
   lista_ip=[]
  
-  for i in range(0, quantidade):
+  for i in range(1, quantidade+1):
      lista_ip.append(f"{ip_inicial.rsplit('.', 1)[0]}.{int(ip_inicial.rsplit('.', 1)[1]) + i}")
      
   return lista_ip
@@ -27,6 +27,7 @@ def gerar_sistemas_ip(lista,selected_item):
     SCL  =[[],[]]
     SCADA=[[],[]]
     
+    plano_integracao=[[],[],[],[]]
    
     #Aqui é feito a classificação dos equipamentos de acordo com o sistema a qual ele pertence
 
@@ -36,9 +37,7 @@ def gerar_sistemas_ip(lista,selected_item):
     remota4_existente= False
     qdbi_existente   = False
     qgd_existente    = False
-    
     for i in range(len(lista)):
-        
         if lista[i][9]=="SCAP" or lista[i][9]=="scap":
             SCAP[0].append(lista[i][3])
             SCAP[1].append(lista[i][8])
@@ -52,39 +51,49 @@ def gerar_sistemas_ip(lista,selected_item):
             SCA[0].append(lista[i][3]) 
             SCA[1].append(lista[i][8])
         elif lista[i][9]=="SCL" or lista[i][9]=="scl":
-           if lista[i][10]== "-":
-                SCL[0].append(lista[i][3])   
-                
-                if lista[i][7]=="Modbus RTU" or lista[i][7]=="Alnet I":
-                    SCL[1].append("Conversor")
+           if lista[i][10]== "-" or (lista[i][10]=="QDBI" and  lista[i][7].upper()=="ALNET I") or (lista[i][10]=="QGD" and  lista[i][7].upper()=="ALNET I") :
+                SCL[0].append(lista[i][3]) #tag
+                if lista[i][7].upper()=="MODBUS RTU" or lista[i][7].upper()=="ALNET I":
+                    SCL[1].append("Conversor do "+lista[i][8])
+                    if lista[i][7].upper() =="MODBUS RTU":
+                        plano_integracao[0].append(lista[i][2])
+                        plano_integracao[1].append("Conversor "+lista[i][7]+"/TCP")
+                        plano_integracao[2].append("Interface Serial "+lista[i][6])
+                        plano_integracao[3].append("1")
+                    else:
+                        plano_integracao[0].append(lista[i][2])
+                        plano_integracao[1].append("Conversor SERIAL/ETHERNET")
+                        plano_integracao[2].append("Interface Serial "+lista[i][6])
+                        plano_integracao[3].append("1")
+
                 else:
                     SCL[1].append(lista[i][8])
-
-           elif (lista[i][10]== "REMOTA 1" and not(remota1_existente)):
-               SCL[0].insert(0,'REM_1')
-               SCL[1].insert(0,'REMOTA-01')
-               remota1_existente= True
-           elif (lista[i][10]== "REMOTA 2" and not(remota2_existente)):
-               SCL[0].insert(0,'REM_2')
-               SCL[1].insert(0,'REMOTA-02')
-               remota2_existente= True
-           elif (lista[i][10]== "REMOTA 3" and not(remota3_existente)):
-               SCL[0].insert(0,'REM_3')
-               SCL[1].insert(0,'REMOTA-03')
-               remota3_existente= True
-           elif (lista[i][10]== "REMOTA 4" and not(remota4_existente)):
-               SCL[0].insert(0,'REM_4')
-               SCL[1].insert(0,'REMOTA-04')
-               remota4_existente= True
-           elif (lista[i][10]== "QDBI" and not(qdbi_existente)):
-               SCL[0].insert(0,'QDBI')
-               SCL[1].insert(0,'QDBI')
-               qdbi_existente= True
-           elif (lista[i][10]== "QGD" and not(qgd_existente)):
-               SCL[0].insert(0,'QGD')
-               SCL[1].insert(0,'QGD')
-               qgd_existente= True
-          
+           else:
+                if (lista[i][10]== "REMOTA 1" and not(remota1_existente)):
+                    SCL[0].insert(0,'REM_1')
+                    SCL[1].insert(0,'REMOTA-01')
+                    remota1_existente= True
+                elif (lista[i][10]== "REMOTA 2" and not(remota2_existente)):
+                    SCL[0].insert(0,'REM_2')
+                    SCL[1].insert(0,'REMOTA-02')
+                    remota2_existente= True
+                elif (lista[i][10]== "REMOTA 3" and not(remota3_existente)):
+                    SCL[0].insert(0,'REM_3')
+                    SCL[1].insert(0,'REMOTA-03')
+                    remota3_existente= True
+                elif (lista[i][10]== "REMOTA 4" and not(remota4_existente)):
+                    SCL[0].insert(0,'REM_4')
+                    SCL[1].insert(0,'REMOTA-04')
+                    remota4_existente= True
+                elif (lista[i][10]== "QDBI" and not(qdbi_existente)):
+                    SCL[0].insert(0,'QDBI')
+                    SCL[1].insert(0,'QDBI')
+                    qdbi_existente= True
+                elif (lista[i][10]== "QGD" and not(qgd_existente)):
+                    SCL[0].insert(0,'QGD')
+                    SCL[1].insert(0,'QGD')
+                    qgd_existente= True
+                
         
         elif lista[i][9]== "SCADA" or lista[i][9]=="scada":
             SCADA[0].append(lista[i][3])
@@ -99,8 +108,8 @@ def gerar_sistemas_ip(lista,selected_item):
             f'ES_{ip_consulta(selected_item,"SCADA")[0][1]}_SWITCHSCL_02',
             f'ES_{ip_consulta(selected_item,"SCADA")[0][1]}_SERVERSCL_01',
             f'ES_{ip_consulta(selected_item,"SCADA")[0][1]}_SERVERSCL_02',
-            f'ES_{ip_consulta(selected_item,"SCADA")[0][1]}_VIEWERSCL_01',
-            f'ES_{ip_consulta(selected_item,"SCADA")[0][1]}_VIEWERSCL_02'
+            f'ES_{ip_consulta(selected_item,"SCADA")[0][1]}_VIEWERSSO_01',
+            f'ES_{ip_consulta(selected_item,"SCADA")[0][1]}_VIEWERSSO_02'
             ]
     #listta básica de todas as estaçoes 
     
@@ -139,33 +148,33 @@ def gerar_sistemas_ip(lista,selected_item):
     endereco_ip_lista_scl    = gerador_ips(ip_consulta(selected_item,"SCL")[0][9],quantidade_equipamentos[5]  )
 
     mascara_scada =['255.255.255.128']*len(endereco_ip_lista_scada)
-    gateway_scada =[ip_consulta(selected_item,"SCADA")[0][7]]*len(endereco_ip_lista_scada)
-    rede_scada    =[ip_consulta(selected_item,"SCADA")[0][5]]*len(endereco_ip_lista_scada)
+    gateway_scada =[ip_consulta(selected_item,"SCADA")[0][5]]*len(endereco_ip_lista_scada)
+    rede_scada    =[ip_consulta(selected_item,"SCADA")[0][7]]*len(endereco_ip_lista_scada)
     id_vlans_scada=[f'{int(ip_consulta(selected_item,"SCADA")[0][8])}']*len(endereco_ip_lista_scada)
     
     mascara_scap =['255.255.255.128']*len(endereco_ip_lista_scap)
-    gateway_scap =[ip_consulta(selected_item,"SCAP")[0][7]]*len(endereco_ip_lista_scap)
-    rede_scap    =[ip_consulta(selected_item,"SCAP")[0][5]]*len(endereco_ip_lista_scap)
+    gateway_scap =[ip_consulta(selected_item,"SCAP")[0][5]]*len(endereco_ip_lista_scap)
+    rede_scap    =[ip_consulta(selected_item,"SCAP")[0][7]]*len(endereco_ip_lista_scap)
     id_vlans_scap=[f'{int(ip_consulta(selected_item,"SCAP")[0][8])}']*len(endereco_ip_lista_scap)
         
     mascara_smm =['255.255.255.128']*len(endereco_ip_lista_smm)
-    gateway_smm =[ip_consulta(selected_item,"SMM")[0][7]]*len(endereco_ip_lista_smm)
-    rede_smm   =[ip_consulta(selected_item,"SMM")[0][5]]*len(endereco_ip_lista_smm)
+    gateway_smm =[ip_consulta(selected_item,"SMM")[0][5]]*len(endereco_ip_lista_smm)
+    rede_smm   =[ip_consulta(selected_item,"SMM")[0][7]]*len(endereco_ip_lista_smm)
     id_vlans_smm=[f'{int(ip_consulta(selected_item,"SMM")[0][8])}']*len(endereco_ip_lista_smm)
 
     mascara_sme =['255.255.255.128']*len(endereco_ip_lista_sme)
-    gateway_sme =[ip_consulta(selected_item,"SME")[0][7]]*len(endereco_ip_lista_sme)
-    rede_sme    =[ip_consulta(selected_item,"SME")[0][5]]*len(endereco_ip_lista_sme)
+    gateway_sme =[ip_consulta(selected_item,"SME")[0][5]]*len(endereco_ip_lista_sme)
+    rede_sme    =[ip_consulta(selected_item,"SME")[0][7]]*len(endereco_ip_lista_sme)
     id_vlans_sme=[f'{int(ip_consulta(selected_item,"SME")[0][8])}']*len(endereco_ip_lista_sme)
         
     mascara_sca  =['255.255.255.128']*len(endereco_ip_lista_sca)
-    gateway_sca  =[ip_consulta(selected_item,"SCA")[0][7]]*len(endereco_ip_lista_sca)
-    rede_sca     =[ip_consulta(selected_item,"SCA")[0][5]]*len(endereco_ip_lista_sca)
+    gateway_sca  =[ip_consulta(selected_item,"SCA")[0][5]]*len(endereco_ip_lista_sca)
+    rede_sca     =[ip_consulta(selected_item,"SCA")[0][7]]*len(endereco_ip_lista_sca)
     id_vlans_sca =[f'{int(ip_consulta(selected_item,"SCA")[0][8])}']*len(endereco_ip_lista_sca)
         
     mascara_scl  =['255.255.255.128']*len(endereco_ip_lista_scl)
-    gateway_scl  =[ip_consulta(selected_item,"SCL")[0][7]]*len(endereco_ip_lista_scl)
-    rede_scl     =[ip_consulta(selected_item,"SCL")[0][5]]*len(endereco_ip_lista_scl)
+    gateway_scl  =[ip_consulta(selected_item,"SCL")[0][5]]*len(endereco_ip_lista_scl)
+    rede_scl     =[ip_consulta(selected_item,"SCL")[0][7]]*len(endereco_ip_lista_scl)
     id_vlans_scl =[f'{int(ip_consulta(selected_item,"SCL")[0][8])}']*len(endereco_ip_lista_scl)
         
     tag              =     tag_scada+tag_scap+tag_smm+tag_sme+tag_sca+tag_scl
@@ -178,4 +187,8 @@ def gerar_sistemas_ip(lista,selected_item):
     id_vlans         =     id_vlans_scada+id_vlans_scap+id_vlans_smm+id_vlans_sme+id_vlans_sca+id_vlans_scl
 
     
+    
+
     gerar_listaip(tag,descricao,endereco_ip_lista,mascara,gateway,rede,id_vlans)
+    item8_plan_int(plano_integracao)
+   
